@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 Route::post('language', 'LanguageController@setLanguage')->name('language');
 
 
