@@ -35,5 +35,4 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login', 'AdminLoginController@login')->name('admin.login');
 });
 
-
 Route::get('/home', 'HomeController@index')->name('home');
