@@ -15,19 +15,25 @@ Route::post('language', 'LanguageController@setLanguage')->name('language');
 //admin routes
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => ['auth:admin']], function () {
-
+ 
+        //admin-panel-routes
         Route::get('/home', 'adminHomeController@index')->name('dashboard');
         Route::get('get-admins' , 'AdminController@getAdmins')->name('admins');
         Route::get('admins', 'AdminController@showAdmins')->name('show.admins');
         Route::get('logout', 'AdminLoginController@logout')->name('logout');
         Route::delete('admin-delete', 'AdminController@destroy')->name('delete.admin');
-        Route::get('/admin/edit/{id}', 'AdminController@editAdmin')->name('edit.update');
+        Route::get('/admin/edit/{id}', 'AdminController@editAdmin')->name('edit.admin');
         Route::put('/admin/update/{id}', 'AdminController@UpdateAdmin')->name('admin.update');
         Route::post('/add', 'AdminController@store')->name('admin.store');
 
-
         Route::get('/profile/{id}', 'AdminController@index')->name('profile.index');
         Route::put('/profile/update/', 'AdminController@Updateprofile')->name('profile.update');
+
+        //site-settings-routes
+        Route::resource('settings', 'SettingController');
+        Route::get('get-settings', 'SettingController@getSettings')->name('settings');
+        Route::get('/setting/edit/{id}', 'SettingController@EditSetting')->name('edit.setting');
+        Route::put('/setting/update/{id}', 'SettingController@update')->name('setting.update');
 
     });
 

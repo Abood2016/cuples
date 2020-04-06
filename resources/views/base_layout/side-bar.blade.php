@@ -26,7 +26,6 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
 
-
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-user"></i>
@@ -42,14 +41,21 @@
                     <p>المدراء</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="fa fa-plus nav-icon"></i>
                     <p>إضافة جديد</p>
                   </a>
-                </li>
+                </li> --}}
               </ul>
             </li>
+
+            <li class="nav-item">
+                  <a href="{{ route('settings.index') }}" class="nav-link">
+                    <i class="nav-icon fa fa-coffee"></i>
+                    <p>الإعدادات</p>
+                  </a>
+              </li>
 
           </ul>
         </nav>

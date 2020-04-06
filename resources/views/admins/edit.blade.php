@@ -1,5 +1,6 @@
 @extends('apps.app')
 
+@section('title')تعديل مدير@endsection
 
 
 @section('content')

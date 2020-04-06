@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -77,13 +78,11 @@ class AdminController extends Controller
          $admins = Admin::get();
 
         return Datatables::of($admins)->addColumn('action', function ($admins) {
-
             return '<input type="hidden" value="' . $admins['id'] . '" class="admin-id".
                     data-adminname="'. $admins['name'].'"
                     name="admin_id" id="admin_id">
-                    <a href="'. route("edit.update", ['id' => $admins['id']]) . '" class="edit-admin"><i class="fa fa-edit"></i></a>
-                    <a href="#"  class="delete-admin"><i class="fa fa-remove"></i></a>
-                 ';
+                    <a href="'. route("edit.admin", ['id' => $admins['id']]) . '" class="edit-admin"><i class="fa fa-edit"></i></a>
+                    <a href="#"  class="delete-admin"><i class="fa fa-remove"></i></a> ';
         })->make(true);
     }
 
@@ -136,7 +135,8 @@ class AdminController extends Controller
         if (!empty($array)) {
             $admin->update($array);
         }
-        Session::flash('message', ' تم  تعديل حساب ' . $admin->name . ' بنجاح');
+        // Session::flash('message', ' تم  تعديل حساب ' . $admin->name . ' بنجاح');
+
         return redirect()->back();
 
     }
@@ -220,7 +220,9 @@ class AdminController extends Controller
             }
             $admin->delete();
 
-            Session::flash('message', ' تم  حذف الحساب  بنجاح');
+        // Session::flash('message', ' تم  حذف الحساب  بنجاح');
+            alert()->message('Message', 'Optional Title');
+
             return response()->json(['message' => ' تم  حذف الحساب  بنجاح', 'status' => 200]);
     
         

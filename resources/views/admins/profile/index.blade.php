@@ -1,5 +1,7 @@
 @extends('apps.app')
 
+@section('title')الحساب الشخصي | {{ $admin->name }} @endsection
+
 
 @section('content')
 

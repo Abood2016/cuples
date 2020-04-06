@@ -23,6 +23,7 @@ class CreateSettingsTable extends Migration
             $table->string('facebook_url');
             $table->string('instagram_url');
             $table->string('twitter_url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

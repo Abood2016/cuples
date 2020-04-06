@@ -1,5 +1,8 @@
 @extends('apps.app')
 
+@section('title')المدراء@endsection
+
+
 @section('content')
     
 <section class="content-header p-4">
@@ -157,7 +160,7 @@
 <script>
   
 $(document).ready(function() {
-     //delete admin script
+  //delete admin script
   var $deleteAdmin = $('.delete-admin');
   var $deleteWindow = $('#delete-window');
   var $admin_id = $('#admin_id');
@@ -198,13 +201,15 @@ $(document).ready(function() {
                 if (response.status == 200) {
 
                   $deleteWindow.modal('hide');
-                  alert(response.message);
+                  // alert(response.message);
+                  swal("تهانينا", response.message, "success")
                   table.ajax.reload();
 
                 }else{
-                alert(response.message);
-                $deleteWindow.modal('hide');
-                 location.reload(); 
+                // alert(response.message);
+                  swal("تحذير", response.message, "error")
+                  $deleteWindow.modal('hide');
+                  location.reload(); 
                 }
             },
         });
@@ -244,6 +249,7 @@ $(document).ready(function() {
               success: function (response){
                 console.log(response)
                 $('#add-window').modal('hide');
+                  swal("تمت العملية", response.message, "success")
                 table.ajax.reload();
                 // alert(response.message);
             },
@@ -288,7 +294,7 @@ $(document).ready(function() {
 
 <script>
 
-   $(function () {
+$(function () {
   table = $("#admins").DataTable({
         "language": {
         },
